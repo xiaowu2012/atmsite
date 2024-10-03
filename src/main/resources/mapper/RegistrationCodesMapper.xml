@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xiaowudr.myuploader.mapper.RegistrationCodesMapper">
+    <insert id="insertRegistrationCodes" parameterType="com.xiaowudr.myuploader.pojo.RegistrationCodes">
+        INSERT INTO REGISTRATIONCODES (REGISTERNO, REGISTERTYPE, ISUSED)
+        VALUES (#{registerNo}, #{registerType}, #{isUsed})
+    </insert>
+
+    <select id="getRegistrationCodes" parameterType="String" resultType="com.xiaowudr.myuploader.pojo.RegistrationCodes">
+        SELECT REGISTERNO, REGISTERTYPE, ISUSED FROM REGISTRATIONCODES  WHERE REGISTERNO = #{registerNo}
+    </select>
+
+    <delete id="deleteRegistrationCodes" parameterType="String">
+        DELETE FROM REGISTRATIONCODES WHERE REGISTERNO = #{registerNo}
+    </delete>
+
+    <update id="updateIsUsed" parameterType="com.xiaowudr.myuploader.pojo.RegistrationCodes">
+        UPDATE REGISTRATIONCODES
+        SET ISUSED = #{isUsed}
+        WHERE REGISTERNO = #{registerNo}
+    </update>
+
+</mapper>
