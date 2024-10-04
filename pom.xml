@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.xiaowudr</groupId>
-    <artifactId>myuploader</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
-    <name>myuploader</name>
-    <description>myuploader</description>
+    <artifactId>atmsite</artifactId>
+    <version>0.0.3-SNAPSHOT</version>
+    <name>atmsite</name>
+    <description>atmsite</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>

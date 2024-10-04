@@ -1,6 +1,6 @@
-package com.xiaowudr.myuploader.mapper;
+package com.xiaowudr.atmsite.mapper;
 
-import com.xiaowudr.myuploader.pojo.AccountTime;
+import com.xiaowudr.atmsite.pojo.AccountTime;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

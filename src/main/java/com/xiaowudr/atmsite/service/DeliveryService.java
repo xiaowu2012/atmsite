@@ -1,6 +1,6 @@
-package com.xiaowudr.myuploader.service;
+package com.xiaowudr.atmsite.service;
 
-import com.xiaowudr.myuploader.mapper.DeliveryMapper;
+import com.xiaowudr.atmsite.mapper.DeliveryMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

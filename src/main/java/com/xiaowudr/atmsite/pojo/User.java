@@ -1,4 +1,4 @@
-package com.xiaowudr.myuploader.pojo;
+package com.xiaowudr.atmsite.pojo;
 
 public class User {
 

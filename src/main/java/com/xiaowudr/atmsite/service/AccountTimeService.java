@@ -1,7 +1,7 @@
-package com.xiaowudr.myuploader.service;
+package com.xiaowudr.atmsite.service;
 
-import com.xiaowudr.myuploader.mapper.AccountTimeMapper;
-import com.xiaowudr.myuploader.pojo.AccountTime;
+import com.xiaowudr.atmsite.mapper.AccountTimeMapper;
+import com.xiaowudr.atmsite.pojo.AccountTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

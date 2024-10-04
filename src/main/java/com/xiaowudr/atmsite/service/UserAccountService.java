@@ -1,8 +1,8 @@
-package com.xiaowudr.myuploader.service;
+package com.xiaowudr.atmsite.service;
 
-import com.xiaowudr.myuploader.mapper.UserMapper;
-import com.xiaowudr.myuploader.pojo.User;
-import com.xiaowudr.myuploader.util.TTASP;
+import com.xiaowudr.atmsite.mapper.UserMapper;
+import com.xiaowudr.atmsite.pojo.User;
+import com.xiaowudr.atmsite.util.TTASP;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

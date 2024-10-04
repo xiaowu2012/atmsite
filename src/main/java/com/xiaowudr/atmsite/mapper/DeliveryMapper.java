@@ -1,4 +1,4 @@
-package com.xiaowudr.myuploader.mapper;
+package com.xiaowudr.atmsite.mapper;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;

@@ -3,8 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.xiaowudr.myuploader.mapper.AccountTimeMapper">
-    <insert id="insertAccountTime" parameterType="com.xiaowudr.myuploader.pojo.AccountTime">
+<mapper namespace="com.xiaowudr.atmsite.mapper.AccountTimeMapper">
+    <insert id="insertAccountTime" parameterType="com.xiaowudr.atmsite.pojo.AccountTime">
         insert into ACCOUNT_TIME(Account, TimeType, TimeRemain, TimeEnd) values(#{account}, #{accountType}, #{timeRemain}, dateadd(day,#{days},getdate()));
     </insert>
 

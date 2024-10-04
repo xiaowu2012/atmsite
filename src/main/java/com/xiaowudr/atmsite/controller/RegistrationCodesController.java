@@ -1,7 +1,7 @@
-package com.xiaowudr.myuploader.controller;
+package com.xiaowudr.atmsite.controller;
 
-import com.xiaowudr.myuploader.pojo.RegistrationCodes;
-import com.xiaowudr.myuploader.service.RegistrationCodesService;
+import com.xiaowudr.atmsite.pojo.RegistrationCodes;
+import com.xiaowudr.atmsite.service.RegistrationCodesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,7 +1,7 @@
-package com.xiaowudr.myuploader.mapper;
+package com.xiaowudr.atmsite.mapper;
 
 
-import com.xiaowudr.myuploader.pojo.User;
+import com.xiaowudr.atmsite.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

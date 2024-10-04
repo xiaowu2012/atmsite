@@ -1,4 +1,4 @@
-package com.xiaowudr.myuploader;
+package com.xiaowudr.atmsite;
 
 import javax.swing.*;
 

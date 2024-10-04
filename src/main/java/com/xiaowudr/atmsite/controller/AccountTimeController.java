@@ -1,6 +1,6 @@
-package com.xiaowudr.myuploader.controller;
+package com.xiaowudr.atmsite.controller;
 
-import com.xiaowudr.myuploader.service.AccountTimeService;
+import com.xiaowudr.atmsite.service.AccountTimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

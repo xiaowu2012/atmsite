@@ -1,11 +1,11 @@
-package com.xiaowudr.myuploader.controller;
+package com.xiaowudr.atmsite.controller;
 
-import com.xiaowudr.myuploader.pojo.AccountTime;
-import com.xiaowudr.myuploader.pojo.RegistrationCodes;
-import com.xiaowudr.myuploader.pojo.User;
-import com.xiaowudr.myuploader.service.AccountTimeService;
-import com.xiaowudr.myuploader.service.RegistrationCodesService;
-import com.xiaowudr.myuploader.service.UserAccountService;
+import com.xiaowudr.atmsite.pojo.AccountTime;
+import com.xiaowudr.atmsite.pojo.RegistrationCodes;
+import com.xiaowudr.atmsite.pojo.User;
+import com.xiaowudr.atmsite.service.AccountTimeService;
+import com.xiaowudr.atmsite.service.RegistrationCodesService;
+import com.xiaowudr.atmsite.service.UserAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

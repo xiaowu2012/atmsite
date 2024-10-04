@@ -1,6 +1,6 @@
-package com.xiaowudr.myuploader.mapper;
+package com.xiaowudr.atmsite.mapper;
 
-import com.xiaowudr.myuploader.pojo.RegistrationCodes;
+import com.xiaowudr.atmsite.pojo.RegistrationCodes;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

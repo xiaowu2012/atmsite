@@ -1,6 +1,6 @@
-package com.xiaowudr.myuploader.controller;
+package com.xiaowudr.atmsite.controller;
 
-import com.xiaowudr.myuploader.service.UserAccountService;
+import com.xiaowudr.atmsite.service.UserAccountService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;

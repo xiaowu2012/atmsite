@@ -1,4 +1,4 @@
-package com.xiaowudr.myuploader.util;
+package com.xiaowudr.atmsite.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
