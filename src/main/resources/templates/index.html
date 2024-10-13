@@ -85,11 +85,6 @@
 <div th:include="nav :: navbar"></div>
 
 
-<audio controls>
-    <source src="/music/lovelife.flac" type="audio/flac">
-    Your browser does not support the audio element.
-</audio>
-
 <!-- Jumbotron -->
 <div class="jumbotron jumbotron-fluid text-center">
     <div class="container">
@@ -106,6 +101,8 @@
 <!-- Player Ranking Section -->
 <section id="player-ranking" class="container py-5">
     <h2 class="section-title text-center">玩家等级排行</h2>
+    <!-- 返回主页的按钮 -->
+    <a th:href="@{/}">返回</a>
     <div class="row">
         <div class="col-md-12">
             <iframe src="/listGameUsers" width="100%" height="800px" frameborder="0"></iframe>
@@ -116,6 +113,8 @@
 <!-- Game Introduction Section -->
 <section id="game-intro" class="container py-5">
     <h2 class="section-title text-center">游戏介绍</h2>
+    <!-- 返回主页的按钮 -->
+    <a th:href="@{/}">返回</a>
     <div class="row">
         <div class="col-md-12 text-center">
             <p class="lead retro-border">
@@ -152,6 +151,8 @@
 
 <section id="game-letter" class="container py-5">
     <h2 class="section-title text-center">阿童木写给玩家的信</h2>
+    <!-- 返回主页的按钮 -->
+    <a th:href="@{/}">返回</a>
     <div class="row">
         <div class="col-md-12 text-center">
             <p class="lead retro-border">亲爱的玩家们，<br>
