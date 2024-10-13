@@ -3,13 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <title>注册页面</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            font-family: 'Raleway', sans-serif; /* 修改字体 */
+            background-color: #f2e7d5; /* 统一背景色 */
             margin: 0;
-            padding: 20px;
+           /* padding: 20px;*/
+        }
+
+        .navbar {
+            background-color: #3a2e2b;
+        }
+        .navbar-brand, .nav-link {
+            font-family: 'Raleway', sans-serif; /* 修改字体 */
+            color: #f7e1bc !important;
+            font-size: 1.25rem; /* 新增的字体大小 */
+            font-weight: normal; /* 修改为正常字体 */
         }
 
         h1 {
@@ -28,14 +40,16 @@
             flex: 1;
             margin-right: 20px;
             padding: 20px;
-            background-color: #f9f9f9;
+            font-family: 'Raleway', sans-serif; /* 修改字体 */
+            background-color: #f2e7d5; /* 统一背景色 */
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .right-column {
             flex: 1;
-            background-color: #fff;
+            font-family: 'Raleway', sans-serif; /* 修改字体 */
+            background-color: #f2e7d5; /* 统一背景色 */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -74,12 +88,16 @@
         button[type="submit"] {
             width: 100%;
             padding: 10px;
-            background-color: #007bff;
-            border: none;
+           /* background-color: #007bff;*/
+         /*   border: none;*/
             color: white;
-            font-size: 16px;
+         /*   font-size: 16px;*/
             border-radius: 5px;
             cursor: pointer;
+            background-color: #cb7831;
+            border-color: #b15e29;
+            font-weight: bold;
+            font-size: 1.1rem; /* 稍微大一点 */
         }
 
         button[type="submit"]:hover {
@@ -101,34 +119,38 @@
     </style>
 </head>
 <body>
+<!-- Include Navigation Bar -->
+<!-- 通过Thymeleaf引入nav.html -->
+<div th:include="nav :: navbar"></div>
+
 <div class="container">
     <div class="left-column">
         <h2>阿童木新区注册入口</h2>
         <p th:text="${message}"></p>
     </div>
     <div class="right-column">
-        <form th:action="@{/register}" th:object="${user}" method="post">
+        <form th:action="@{/register}" th:object="${account}" method="post">
             <label for="account">游戏帐号: <span class="required">*</span></label>
-            <input type="text" id="account" name="account" th:value="${user.account}" required />
+            <input type="text" id="account" name="account" th:value="${account.accountID}" required />
 
             <label for="password">游戏密码: <span class="required">*</span></label>
-            <input type="password" id="password" name="password" th:value="${user.password}" required />
+            <input type="password" id="password" name="password" th:value="${account.password}" required />
 
             <label for="transactionPassword">交易密码: <span class="required">*</span></label>
-            <input type="password" id="transactionPassword" name="transactionPassword" th:value="${user.transactionPassword}"
+            <input type="password" id="transactionPassword" name="transactionPassword" th:value="${account.transactionPassword}"
                    required maxlength="6" pattern="\d{6}" title="交易密码必须是6位数字" />
 
             <label for="email">邮箱地址: <span class="required">*</span></label>
-            <input type="email" id="email" name="email" th:value="${user.email}" required />
+            <input type="email" id="email" name="email" th:value="${account.email}" required />
 
             <label for="name">玩家姓名: <span class="required">*</span></label>
-            <input type="text" id="name" name="name" th:value="${user.name}" required />
+            <input type="text" id="name" name="name" th:value="${account.name}" required />
 
             <label for="idCard">身份证号码: <span class="required">*</span></label>
-            <input type="text" id="idCard" name="idCard" th:value="${user.idCard}" required />
+            <input type="text" id="idCard" name="idCard" th:value="${account.idCard}" required />
 
             <label for="registerCode">注册码: <span class="required">*</span></label>
-            <input type="text" id="registerCode" name="registerCode" th:value="${user.registerCode}" required />
+            <input type="text" id="registerCode" name="registerCode" th:value="${account.registerCode}" required />
 
             <button type="submit">注册</button>
         </form>

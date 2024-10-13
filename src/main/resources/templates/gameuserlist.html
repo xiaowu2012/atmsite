@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Top Game Users</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+            height: 100vh; /* 使body占满整个视口高度 */
+            margin: 0; /* 去掉默认margin */
+        }
+        table {
+            border-collapse: collapse; /* 合并边框 */
+            width: 80%; /* 设置表格宽度 */
+        }
+        th, td {
+            padding: 10px; /* 内边距 */
+            text-align: center; /* 单元格内容居中 */
+            border: 1px solid black; /* 边框样式 */
+        }
+        th {
+            background-color: #f2f2f2; /* 表头背景颜色 */
+        }
+        .top-user {
+            color: coral; /* 橘红色文字 */
+            font-size: 18px; /* 增加字号，假设默认字号为16px */
+        }
+        .bold {
+            font-weight: bold; /* 粗体样式 */
+        }
+    </style>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>角色名</th>
+        <th>級別</th>
+        <th>職業</th>
+        <th>性別</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user, iterStat : ${gameUsers}">
+        <td th:text="${user.userID}" th:class="${iterStat.index < 3} ? 'top-user bold' : ''"></td>
+        <td th:text="${user.level}" th:class="${iterStat.index < 3} ? 'top-user bold' : ''"></td>
+        <td th:text="${user.byClass == 0 ? '格斗家' : (user.byClass == 1 ? '异能者' : (user.byClass == 2 ? '剑武士' : '枪械师'))}"
+            th:class="${iterStat.index < 3} ? 'top-user bold' : ''"></td>
+        <td th:text="${user.gender == 1 ? '人妖' : '男性'}" th:class="${iterStat.index < 3} ? 'top-user bold' : ''"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

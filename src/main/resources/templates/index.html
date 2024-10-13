@@ -1,97 +1,178 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>阿童木决战管理系统</title>
+    <title>阿童木决战</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-            color: #333;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            background-color: #f2e7d5; /* 统一背景色 */
+            font-family: 'Raleway', sans-serif; /* 修改字体 */
+        }
+        .navbar {
+            background-color: #3a2e2b;
+        }
+        .navbar-brand, .nav-link {
+            font-family: 'Raleway', sans-serif; /* 修改字体 */
+            color: #f7e1bc !important;
+            font-size: 1.25rem; /* 新增的字体大小 */
+            font-weight: normal; /* 修改为正常字体 */
+        }
+        .jumbotron {
+            /*background-image: url('/image/atongmu.jpg'); !* 替换为实际背景图片路径 *!*/
+            background-size: cover;
+            background-color: #f2e7d5; /* 统一背景色 */
+            color: #2b2b2b;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+            padding: 100px 0;
+            border-bottom: 5px solid #3a2e2b;
         }
 
-        .container {
-            background-color: #fff;
-            padding: 40px 20px;
-            max-width: 500px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .container:hover {
-            transform: scale(1.05);
-        }
-
-        h1 {
-            color: #3498db;
-            font-size: 28px;
-            margin-bottom: 30px;
-        }
-
-        .link {
+        .jumbotron h1 {
+            font-size: 2.8rem; /* 字体变小一点 */
+            border-bottom: 4px solid #3a2e2b;
             display: inline-block;
-            width: 100%;
-            background-color: #3498db;
-            color: white;
-            text-decoration: none;
-            padding: 15px 0;
-            margin: 12px 0;
-            border-radius: 6px;
-            font-size: 18px;
+            padding-bottom: 10px;
+        }
+        .jumbotron p {
+            font-size: 1.2rem;
+        }
+        .jumbotron .btn-primary {
+            background-color: #cb7831;
+            border-color: #b15e29;
             font-weight: bold;
-            transition: background-color 0.3s ease;
+            font-size: 1.1rem; /* 稍微大一点 */
         }
-
-        .link:hover {
-            background-color: #2980b9;
+        .section-title {
+            font-size: 2rem;
+            color: #3a2e2b;
+            border-bottom: 2px solid #cb7831;
+            display: inline-block;
+            margin-bottom: 20px;
         }
-
+        .card-header {
+            background-color: #3a2e2b;
+            color: white;
+        }
+        .card-body {
+            background-color: #f8f9fa;
+        }
         footer {
-            margin-top: 30px;
-            font-size: 12px;
-            color: #7f8c8d;
+            background-color: #3a2e2b;
+            color: white;
+            padding: 20px 0;
         }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 20px;
-            }
-
-            h1 {
-                font-size: 24px;
-            }
-
-            .link {
-                font-size: 16px;
-            }
+        footer a {
+            color: #f8f9fa !important;
+        }
+        .retro-border {
+            border: 3px dashed #cb7831;
+            padding: 15px;
+            margin-top: 30px;
+            text-align: left; /* 左对齐 */
+            font-family: 'Raleway', sans-serif; /* 显式指定字体 */
+            font-size: 1.2rem; /* 与 jumbotron p 保持一致的字体大小 */
+            color: #2b2b2b; /* 可选，保持颜色一致 */
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <h1>阿童木决战管理系统</h1>
 
-    <!-- 发货链接 -->
-    <a class="link" th:href="@{/register}">玩家注册入口</a>
+<!-- Include Navigation Bar -->
+<!-- 通过Thymeleaf引入nav.html -->
+<div th:include="nav :: navbar"></div>
 
-    <!-- 时间充值链接 -->
-    <a class="link" th:href="@{/recharge}">游戏账号时间充值</a>
 
-    <!-- 生成注册码链接 -->
-    <a class="link" th:href="@{/generate}">生成注册码</a>
+<audio controls>
+    <source src="/music/lovelife.flac" type="audio/flac">
+    Your browser does not support the audio element.
+</audio>
 
-    <footer>
-        阿童木决战 © 2024
-    </footer>
+<!-- Jumbotron -->
+<div class="jumbotron jumbotron-fluid text-center">
+    <div class="container">
+        <h1 class="display-4">阿童木决战 体悟岁月的流淌</h1>
+        <p>&nbsp</p>
+        <p class="lead">时光荏苒，决战玩家们都已步入三十而立四十不惑之年，往昔岁月，决战的青春回忆，激荡着年轻的生命。而今内心平静是我们的向往，愿所有的玩家都可以慢慢感受觉知，感受内心的丰富和不凡，慢慢的理解生命的本质，感恩一切的相识。
+            觉知决战致力于研发 《阿童木反挂系统》，还玩家一个干净的决战世界。外挂是所有游戏的毒瘤，阿童木反挂引擎攻防兼备，从2023年8月12号以后，在被动防御监控的基础上，成功研发出主动追杀的功能，真正意义上进入查杀双剑合璧的新纪元。这是历史的里程碑，一扫决战外挂乌烟瘴气的大环境，为所有游戏所有玩家带来曙光。</p>
+        <a th:href="@{/register}" class="btn btn-primary btn-lg">立即注册</a>
+        <a href="https://share.weiyun.com/BAfK0ubD" class="btn btn-primary btn-lg">游戏下载</a>
+        <a href="#" class="btn btn-primary btn-lg">外挂脚本阵亡名单</a>
+    </div>
 </div>
+
+<!-- Player Ranking Section -->
+<section id="player-ranking" class="container py-5">
+    <h2 class="section-title text-center">玩家等级排行</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <iframe src="/listGameUsers" width="100%" height="800px" frameborder="0"></iframe>
+        </div>
+    </div>
+</section>
+
+<!-- Game Introduction Section -->
+<section id="game-intro" class="container py-5">
+    <h2 class="section-title text-center">游戏介绍</h2>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <p class="lead retro-border">
+                1. 强力封杀市面上所有外挂，提供简易内挂可站桩。<BR>
+                2. 官方不售卖任何装备武器。游戏时间可以兑换少量不影响游戏平衡的消耗品。<BR>
+                3. 新账号注册上线免费赠送120个小时免费游戏时间。<BR>
+                4. 生命戒指有1技能属性，耐久后消失。同时保护 经验和装备。<BR>
+                5. 冰风水晶可以洗出1+1， 用法：待改首饰放物品第一栏，冰风水晶随意放哪格，鼠标右键点击冰风水晶后，查看其属性变化即可。<BR>
+                6. 月光宝盒可以开出各种材料，药店亦有售卖。 <BR>
+                7. 时间兑换圣人药或者圣药的时候请务必留出至少背包一格，否则只扣除时间，不给药品。 <BR>
+                8. 游戏第一次登陆会出现“不知名”错误，退出重试即可正常登陆。 <BR>
+                9. 所有职业5J的基本武器换经验的时候，会赠送2022个战斗经验 <BR>
+                10. 一个IP限制两个账号登陆 <BR>
+                11. <font color=red>[新!]</font> 从月光宝盒除去兴奋剂<br>
+                12. <font color=red>[新!]</font>  登陆器支持重进游戏（不再需要关闭登陆器）<br>
+                13. <font color=red>[新付费专享!]</font> 新增命令：/自动D，默认关闭，输入开启，再次输入关闭。
+                <br>
+                14. <font color=red>[新!]</font> 所有职业武器一定程度降低 高改加成，每改加成比例6% (武器本身的伤害+武器当前升级的伤害) <br>
+                15. <font color=red>[新!]</font> 去除所有的免费点卡用户限制<br>
+                16. <font color=red>[新!]</font> 去除PK角色的等级差保护 <br>
+                17. <font color=red>[新付费专享!]</font> 新增命令：/保留分 50， 默认保留分是70，玩家可以根据自身需要更改 <br>
+                18. <font color=red>[新!]</font> 智能识别和封杀按键精灵，直接封号。 <br>
+                19. <font color=red>[新!]</font> 升级反挂系统，提高智能识别和封杀准确为100% <br>
+                20. <font color=red>[新!]</font> 解决著名的21亿金币溢出 导致的刷月光宝盒的问题 <br>
+
+                21. <font color=red>[新!]</font> 不带生命 装备掉落概率和市民等级的关系- 霸王(55%), 恶人(50%), 土匪(45%),强盗 (40%),坏人 (35%),平民 (30%), 好人(25%), 游侠(20%),英雄(15%),领袖(10%),圣人(5%) <br>
+                22. <font color=red>[新付费专享!]</font>自动D时间更新为20秒 <br>
+                23. <font color=red>[新付费专享!]</font>增加4排属性的黄装掉落的可能 <br>
+                24. <font color=red>[新付费专享!]</font>打怪增加20%的额外经验加成 <br></p>
+
+        </div>
+    </div>
+</section>
+
+<section id="game-letter" class="container py-5">
+    <h2 class="section-title text-center">阿童木写给玩家的信</h2>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <p class="lead retro-border">亲爱的玩家们，<br>
+                时光荏苒，转眼间我们已经走过了二十多个春秋。今天，我想和大家分享一下对2001年经典游戏《决战》的怀念。那是一段充满激情与回忆的时光，游戏里的每一个战斗、每一次胜利，仿佛依旧在我们的心中荡漾。
+                《决战》不仅仅是一款游戏，它是我们共同的记忆。无数个夜晚，我们在游戏中并肩作战，体验着策略与智谋的较量。那些激烈的战斗场景、深刻的人物刻画，都让我们深深地沉浸在这个虚拟世界中。它教会了我们团队合作的重要性，也让我们感受到在游戏中获得胜利的喜悦。
+                如今，虽然岁月已逝，但《决战》留给我们的不仅仅是游戏的乐趣，更是一段无可替代的青春记忆。让我们一同珍惜这段回忆，期待在未来再次与大家相聚，重温那份热血与激情！<br>
+                祝好，<br>
+                阿童木
+            </p>
+
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-center">
+    <p>&copy; 2024 阿童木决战 2001 | <a href="#">隐私政策</a> | <a href="#">服务条款</a></p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

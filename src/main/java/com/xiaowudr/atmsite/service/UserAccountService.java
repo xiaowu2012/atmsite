@@ -1,7 +1,7 @@
 package com.xiaowudr.atmsite.service;
 
-import com.xiaowudr.atmsite.mapper.UserMapper;
-import com.xiaowudr.atmsite.pojo.User;
+import com.xiaowudr.atmsite.mapper.AccountMapper;
+import com.xiaowudr.atmsite.pojo.Account;
 import com.xiaowudr.atmsite.util.TTASP;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,15 +20,15 @@ public class UserAccountService {
     static Connection con;
 
     @Autowired
-    private UserMapper userMapper;
+    private AccountMapper accountMapper;
 
-    public void registerUser(User user) {
-        user.setEncryptedPassword(TTASP.ttasp_Password(user.getPassword()));
-        userMapper.insertUser(user);
+    public void registerUser(Account account) {
+        account.setEncryptedPassword(TTASP.ttasp_Password(account.getPassword()));
+        accountMapper.insertUser(account);
     }
 
-    public User getUserByAccount(String account) {
-       return userMapper.getUserByAccount(account);
+    public Account getUserByAccount(String account) {
+       return accountMapper.getUserByAccount(account);
     }
 
     //static Statement stcd mt;

@@ -1,8 +1,8 @@
 package com.xiaowudr.atmsite.controller;
 
+import com.xiaowudr.atmsite.pojo.Account;
 import com.xiaowudr.atmsite.pojo.AccountTime;
 import com.xiaowudr.atmsite.pojo.RegistrationCodes;
-import com.xiaowudr.atmsite.pojo.User;
 import com.xiaowudr.atmsite.service.AccountTimeService;
 import com.xiaowudr.atmsite.service.RegistrationCodesService;
 import com.xiaowudr.atmsite.service.UserAccountService;
@@ -26,32 +26,32 @@ public class UserController {
 
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("account", new Account());
         return "register";
     }
 
     @PostMapping("/register")
-    public String registerUser(User user, Model model) {
-        User targetUser = userService.getUserByAccount(user.getAccount());
+    public String registerUser(Account account, Model model) {
+        Account targetAccount = userService.getUserByAccount(account.getAccountID());
 
 
         // it is not used, and target user exists
-        if (targetUser == null) {
-            RegistrationCodes registrationCodes = registrationCodesService.getRegistrationCodes(user.getRegisterCode());
+        if (targetAccount == null) {
+            RegistrationCodes registrationCodes = registrationCodesService.getRegistrationCodes(account.getRegisterCode());
             if (registrationCodes != null) {
                 boolean isGoodToUse = registrationCodes.getIsUsed() == 0;
                 if (isGoodToUse) {
-                    userService.registerUser(user);
+                    userService.registerUser(account);
                     if (registrationCodes.getRegisterType() == 1) {
                         AccountTime accountTime = new AccountTime();
-                        accountTime.setAccount(user.getAccount());
+                        accountTime.setAccount(account.getAccountID());
                         accountTime.setDays(30);
                         accountTime.setAccountType(1);
                         accountTime.setTimeRemain(120);
                         accountTimeService.insertAccountTime(accountTime);
                     } else {
                         AccountTime accountTime = new AccountTime();
-                        accountTime.setAccount(user.getAccount());
+                        accountTime.setAccount(account.getAccountID());
                         accountTime.setDays(1);
                         accountTime.setAccountType(0);
                         accountTime.setTimeRemain(21600);
@@ -59,7 +59,7 @@ public class UserController {
                     }
                     registrationCodes.setIsUsed(1);
                     registrationCodesService.updateIsUsed(registrationCodes);
-                    model.addAttribute("user", user);
+                    model.addAttribute("user", account);
                     return "success";
                 } else {
                     model.addAttribute("message", "错误：注册码已经使用。");

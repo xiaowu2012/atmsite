@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper
+                PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xiaowudr.atmsite.mapper.GameUserMapper">
+
+    <select id="listGameUsers" resultType="com.xiaowudr.atmsite.pojo.GameUser">
+        SELECT TOP 15 struserid as userID, slevel as level, byclass, sgender as gender
+        FROM GameUser
+        WHERE tIsOP = 0
+        ORDER BY slevel DESC, iExp DESC
+    </select>
+
+</mapper>
