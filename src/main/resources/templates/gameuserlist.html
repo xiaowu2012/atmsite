@@ -27,6 +27,11 @@
             color: coral; /* 橘红色文字 */
             font-size: 18px; /* 增加字号，假设默认字号为16px */
         }
+
+        .top1 {
+            color: orangered; /* 橘红色文字 */
+            font-size: 24px; /* 增加字号，假设默认字号为16px */
+        }
         .bold {
             font-weight: bold; /* 粗体样式 */
         }
@@ -36,6 +41,7 @@
 <table>
     <thead>
     <tr>
+        <th>名次</th> <!-- 新增名次列 -->
         <th>角色名</th>
         <th>級別</th>
         <th>職業</th>
@@ -44,11 +50,12 @@
     </thead>
     <tbody>
     <tr th:each="user, iterStat : ${gameUsers}">
-        <td th:text="${user.userID}" th:class="${iterStat.index < 3} ? 'top-user bold' : ''"></td>
-        <td th:text="${user.level}" th:class="${iterStat.index < 3} ? 'top-user bold' : ''"></td>
+        <td th:text="${iterStat.index + 1}" th:class="${iterStat.index == 0 ? 'top1 bold' : (iterStat.index < 3 ? 'top-user bold' : '')}"></td> <!-- 名次列 -->
+        <td th:text="${user.userID}" th:class="${iterStat.index == 0 ? 'top1 bold' : (iterStat.index < 3 ? 'top-user bold' : '')}"></td>
+        <td th:text="${user.level}" th:class="${iterStat.index == 0 ? 'top1 bold' : (iterStat.index < 3 ? 'top-user bold' : '')}"></td>
         <td th:text="${user.byClass == 0 ? '格斗家' : (user.byClass == 1 ? '异能者' : (user.byClass == 2 ? '剑武士' : '枪械师'))}"
-            th:class="${iterStat.index < 3} ? 'top-user bold' : ''"></td>
-        <td th:text="${user.gender == 1 ? '人妖' : '男性'}" th:class="${iterStat.index < 3} ? 'top-user bold' : ''"></td>
+            th:class="${iterStat.index == 0 ? 'top1 bold' : (iterStat.index < 3 ? 'top-user bold' : '')}"></td>
+        <td th:text="${user.gender == 1 ? '人妖' : '男性'}" th:class="${iterStat.index == 0 ? 'top1 bold' : (iterStat.index < 3 ? 'top-user bold' : '')}"></td>
     </tr>
     </tbody>
 </table>
