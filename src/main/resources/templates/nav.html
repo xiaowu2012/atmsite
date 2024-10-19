@@ -4,7 +4,7 @@
 <body>
 <div th:fragment="navbar">
     <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="#">阿童木决战 給決戰玩家一個永遠的港灣</a>
+        <a class="navbar-brand" href="#">阿童木决战</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -14,16 +14,19 @@
                     <a class="nav-link" th:href="@{/}">主页</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/#game-intro}">游戏介绍</a>
+                    <a class="nav-link" th:href="@{/#game-intro}">介绍</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/register}">账号注册</a>
+                    <a class="nav-link" href="https://share.weiyun.com/BAfK0ubD">下载</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/#player-ranking}">玩家排行</a>
+                    <a class="nav-link" th:href="@{/#player-ranking}">排行</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/changepasswd}">资料修改</a>
+                    <a class="nav-link" th:href="@{/register}">注册</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/changepasswd}">修改</a>
                 </li>
             </ul>
         </div>
