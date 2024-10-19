@@ -6,14 +6,24 @@
 <mapper namespace="com.xiaowudr.atmsite.mapper.AccountMapper">
     <insert id="insertUser" parameterType="com.xiaowudr.atmsite.pojo.Account">
         INSERT INTO NGSCUSER (strUserID,strPasswd,strName,strTradeCode,strSocNo,strEMail)
-        VALUES (#{account}, #{encryptedPassword}, #{name}, #{transactionPassword},#{idCard},#{email})
+        VALUES (#{accountID}, #{encryptedPassword}, #{name}, #{transactionPassword},#{idCard},#{email})
     </insert>
 
     <select id="getUserByAccount" parameterType="String" resultType="com.xiaowudr.atmsite.pojo.Account">
-        SELECT strUserID AS account, strPasswd AS password, strName AS name,
+        SELECT strUserID AS accountID, strPasswd AS encryptedPassword, strName AS name,
                strTradeCode AS transactionPassword, strSocNo AS idCard, strEMail AS email
         FROM NGSCUSER
-        WHERE strUserID = #{account}
+        WHERE strUserID = #{accountID}
     </select>
+
+    <update id="updateUser" parameterType="com.xiaowudr.atmsite.pojo.Account">
+        UPDATE NGSCUSER
+        SET strPasswd = #{encryptedPassword},
+            strName = #{name},
+            strTradeCode = #{transactionPassword},
+            strSocNo = #{idCard},
+            strEMail = #{email}
+        WHERE strUserID = #{accountID}
+    </update>
 
 </mapper>

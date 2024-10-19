@@ -8,5 +8,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface AccountMapper {
 
     void insertUser(Account account);
-    Account getUserByAccount(String account);
+    Account getUserByAccount(String accountID);
+    int updateUser(Account account);
 }

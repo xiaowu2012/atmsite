@@ -22,10 +22,9 @@ public class DeliveryController {
     public String deliverItem(
             @RequestParam("adminPassword") String adminPassword,
             @RequestParam("gameAccount") String gameAccount,
-            @RequestParam(value = "moonBoxItemId", required = false) Integer moonBoxItemId,
-            @RequestParam(value = "moonCakeItemId", required = false) Integer moonCakeItemId,
-            @RequestParam(value = "moonBoxCount", required = false) Integer moonBoxCount,
-            @RequestParam(value = "moonCakeCount", required = false) Integer moonCakeCount,
+            @RequestParam("itemId") Integer itemId,
+            @RequestParam("itemCount") Integer itemCount,
+
             Model model) {
 
         // 验证管理员密码
@@ -34,18 +33,17 @@ public class DeliveryController {
             return "deliver_item";
         }
 
+        boolean success = deliveryService.deliverItem(gameAccount, itemId, itemCount);
 
-        // 调用服务层处理发货逻辑
-        boolean success_moonBox = deliveryService.deliverItem(gameAccount, moonBoxItemId, moonBoxCount);
-        boolean success_moonCake = deliveryService.deliverItem(gameAccount, moonCakeItemId, moonCakeCount);
-
-        if (success_moonBox && success_moonCake ) {
+        if (success ) {
             model.addAttribute("message", "发货成功！");
         } else {
             model.addAttribute("error", "发货失败，请检查输入信息");
         }
 
         model.addAttribute("adminPassword", adminPassword);
+        model.addAttribute("itemId", itemId);
+        model.addAttribute("itemCount", itemCount);
 
         return "deliver_item";
     }

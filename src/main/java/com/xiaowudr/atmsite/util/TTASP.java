@@ -38,7 +38,7 @@ public class TTASP {
     }
 
     public static void main(String[] args) {
-        String password = "xs198762"; // The input string
+        String password = "xmp123hut"; // The input string
         String result = ttasp_Password(password);
         System.out.println("Generated ttasp_Password: " + result);
     }

@@ -130,8 +130,8 @@
     </div>
     <div class="right-column">
         <form th:action="@{/register}" th:object="${account}" method="post">
-            <label for="account">游戏帐号: <span class="required">*</span></label>
-            <input type="text" id="account" name="account" th:value="${account.accountID}" required />
+            <label for="accountID">游戏帐号: <span class="required">*</span></label>
+            <input type="text" id="accountID" name="accountID" th:value="${account.accountID}" required />
 
             <label for="password">游戏密码: <span class="required">*</span></label>
             <input type="password" id="password" name="password" th:value="${account.password}" required />

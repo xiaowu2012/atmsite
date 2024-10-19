@@ -27,8 +27,12 @@ public class UserAccountService {
         accountMapper.insertUser(account);
     }
 
-    public Account getUserByAccount(String account) {
-       return accountMapper.getUserByAccount(account);
+    public Account getUserByAccount(String accountID) {
+       return accountMapper.getUserByAccount(accountID);
+    }
+
+    public int updateUser(Account account) {
+        return accountMapper.updateUser(account);
     }
 
     //static Statement stcd mt;

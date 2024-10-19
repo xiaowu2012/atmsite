@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>注册成功</title>
+    <title>密码修改成功</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -91,30 +91,30 @@
 <body>
 <div class="overlay"></div> <!-- 半透明背景遮罩 -->
 <div class="container">
-    <h1>注册成功</h1>
-    <p class="highlight">恭喜！您的游戏账号注册成功，请妥善保存如下信息：</p>
+    <h1>玩家资料修改成功</h1>
+    <p class="highlight">恭喜！您的游戏账号资料修改成功，请妥善保存如下信息：</p>
     <div class="info">
         <label>游戏帐号:</label>
         <p th:text="${account.accountID}"></p>
     </div>
     <div class="info">
-        <label>游戏密码:</label>
+        <label>新登录密码:</label>
         <p th:text="${account.password}"></p>
     </div>
     <div class="info">
-        <label>交易密码:</label>
+        <label>新交易密码:</label>
         <p th:text="${account.transactionPassword}"></p>
     </div>
     <div class="info">
-        <label>邮箱地址:</label>
+        <label>新邮箱地址:</label>
         <p th:text="${account.email}"></p>
     </div>
     <div class="info">
-        <label>玩家姓名:</label>
+        <label>新玩家姓名:</label>
         <p th:text="${account.name}"></p>
     </div>
     <div class="info">
-        <label>身份证号码:</label>
+        <label>新身份证号码:</label>
         <p th:text="${account.idCard}"></p>
     </div>
     <a class="button" th:href="@{/}">返回主页</a> <!-- 返回主页的按钮 -->

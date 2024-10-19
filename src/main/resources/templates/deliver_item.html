@@ -100,28 +100,20 @@
             <input type="text" id="gameAccount" name="gameAccount" required>
         </div>
 
-        <!-- 月光宝盒数量选择 -->
         <div class="item-group">
-            <label for="moonBoxCount">冰风水晶:</label>
-            <select id="moonBoxCount" name="moonBoxCount">
-                <option value="0" selected>0</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
+            <label for="itemSelect">选择物品:</label>
+            <select id="itemSelect" name="itemId" required>
+                <option value="876">冰风水晶</option>
+                <option value="802">魔法石</option>
+                <option value="807">幸运药</option>
+                <option value="875">兴奋剂</option>
+                <option value="845">超级灵石</option>
             </select>
-            <!-- 隐藏字段，用于传递月光宝盒的 itemid -->
-            <input type="hidden" name="moonBoxItemId" value="876">
         </div>
 
-        <!-- 鱼翅月饼数量选择 -->
-        <div class="item-group">
-            <label for="moonCakeCount">魔法石:</label>
-            <select id="moonCakeCount" name="moonCakeCount">
-                <option value="0" selected>0</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-            </select>
-            <!-- 隐藏字段，用于传递鱼翅月饼的 itemid -->
-            <input type="hidden" name="moonCakeItemId" value="802">
+        <div class="form-group">
+            <label for="itemCount">数量:</label>
+            <input type="number" id="itemCount" name="itemCount" required min="0" placeholder="数量">
         </div>
 
         <button type="submit">发货</button>
