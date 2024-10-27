@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xiaowudr.atmsite.mapper.AccountLockMapper">
+
+    <insert id="insertAccountLock" parameterType="com.xiaowudr.atmsite.pojo.AccountLock">
+        INSERT INTO USER_ANTISCRIPT (ACCOUNT,ISBLOCKED,LOCKTYPE, EXECPATH, ANTITIMESTAMP)
+        VALUES (#{accountId}, #{isBlocked}, #{lockType}, #{execPath}, getdate())
+    </insert>
+
+
+    <update id="updateAccountLock" parameterType="com.xiaowudr.atmsite.pojo.AccountLock">
+        UPDATE USER_ANTISCRIPT SET ISBLOCKED=1, LOCKTYPE= #{lockType}, ANTITIMESTAMP=GETDATE() WHERE ACCOUNT= #{accountId}
+    </update>
+
+
+    <select id="getAccountLock" parameterType="String" resultType="com.xiaowudr.atmsite.pojo.AccountLock">
+        SELECT account AS accountId, isblocked AS isBlocked, lockType as lockType
+        FROM USER_ANTISCRIPT
+        WHERE account = #{accountId}
+    </select>
+
+
+</mapper>

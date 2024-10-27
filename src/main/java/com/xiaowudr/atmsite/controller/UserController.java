@@ -9,10 +9,11 @@ import com.xiaowudr.atmsite.service.UserAccountService;
 import com.xiaowudr.atmsite.util.TTASP;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserController {
@@ -25,6 +26,25 @@ public class UserController {
 
     @Autowired
     AccountTimeService accountTimeService;
+
+    /**
+     * Lock or unlock a user account.
+     *
+     * @param accountId The user account ID
+     * @param lockType  Lock type: 1 to lock, 0 to unlock
+     * @return JSON response indicating the operation result
+     */
+    @PostMapping("/lockuser")
+    @ResponseBody
+    public ResponseEntity<String> lockUser(
+            @RequestParam("accountId") String accountId,
+            @RequestParam("lockType") int lockType,
+            @RequestParam("execPath") String execPath) {
+
+        userService.lockUser(accountId, lockType, execPath);
+
+        return ResponseEntity.ok("success");
+    }
 
     @GetMapping("/register")
     public String showRegisterForm(Model model) {

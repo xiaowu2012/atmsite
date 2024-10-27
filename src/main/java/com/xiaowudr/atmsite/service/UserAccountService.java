@@ -1,7 +1,9 @@
 package com.xiaowudr.atmsite.service;
 
+import com.xiaowudr.atmsite.mapper.AccountLockMapper;
 import com.xiaowudr.atmsite.mapper.AccountMapper;
 import com.xiaowudr.atmsite.pojo.Account;
+import com.xiaowudr.atmsite.pojo.AccountLock;
 import com.xiaowudr.atmsite.util.TTASP;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +24,9 @@ public class UserAccountService {
     @Autowired
     private AccountMapper accountMapper;
 
+    @Autowired
+    private AccountLockMapper accountLockMapper;
+
     public void registerUser(Account account) {
         account.setEncryptedPassword(TTASP.ttasp_Password(account.getPassword()));
         accountMapper.insertUser(account);
@@ -33,6 +38,28 @@ public class UserAccountService {
 
     public int updateUser(Account account) {
         return accountMapper.updateUser(account);
+    }
+
+    public void lockUser(String accountId, int lockType, String execPath) {
+        Account currentAccount = accountMapper.getUserByAccount(accountId);
+        if(currentAccount!=null) {
+            //String accountId = currentAccount.getAccountID();
+            //AccountLock accountLock = accountLockMapper.getAccountLock(accountId);
+            AccountLock newAccountLock = new AccountLock();
+            newAccountLock.setAccountId(accountId);
+            newAccountLock.setLockType(lockType);
+            newAccountLock.setIsBlocked(1);
+            newAccountLock.setExecPath(execPath);
+
+         /*   if(accountLock!=null) {
+                accountLockMapper.updateAccountLock(accountLock);
+            } else {
+                accountLockMapper.insertAccountLock(newAccountLock);
+            }*/
+
+            accountLockMapper.insertAccountLock(newAccountLock);
+        }
+        //return accountMapper.lockUser(accountId, lockType);
     }
 
     //static Statement stcd mt;
