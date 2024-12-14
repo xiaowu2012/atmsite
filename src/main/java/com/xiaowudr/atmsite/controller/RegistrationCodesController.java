@@ -27,7 +27,7 @@ public class RegistrationCodesController {
                                @RequestParam("codeType") String codeType,
                                Model model) {
         // 验证管理员密码（此处为示例，实际可以从数据库或配置中获取正确的密码）
-        String correctPassword = "201219";  // 请替换为实际的管理员密码
+        String correctPassword = "Yangzhe@123";  // 请替换为实际的管理员密码
         if (!adminPassword.equals(correctPassword)) {
             model.addAttribute("error", "管理员密码错误");
             return "generate_code";
