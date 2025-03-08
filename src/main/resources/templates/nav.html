@@ -1,41 +1,94 @@
-<!-- src/main/resources/templates/nav.html -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<header>
+    <style>
+        .audio-player {
+            position: fixed; /* 悬浮效果 */
+            top: 20px; /* 初始位置 */
+            right: 20px; /* 初始位置 */
+            z-index: 1000; /* 确保悬浮在页面上方 */
+            background: #343a40; /* 背景颜色 */
+            padding: 10px;
+            border-radius: 10px; /* 圆角 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 阴影效果 */
+            cursor: move; /* 鼠标样式 */
+        }
+
+        .audio-player audio {
+            width: 100%; /* 音频播放器宽度 */
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var audioPlayer = document.getElementById("audioPlayer");
+            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+
+            audioPlayer.onmousedown = dragMouseDown;
+
+            function dragMouseDown(e) {
+                e = e || window.event;
+
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+
+                document.onmouseup = closeDragElement;
+                document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+                e = e || window.event;
+
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+
+                audioPlayer.style.top = (audioPlayer.offsetTop - pos2) + "px";
+                audioPlayer.style.right = (audioPlayer.offsetRight - pos1) + "px";
+            }
+
+            function closeDragElement() {
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+        });
+    </script>
+</header>
 <body>
 <div th:fragment="navbar">
     <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="#">阿童木决战</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/}">主页</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/#game-intro}">介绍</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://share.weiyun.com/BAfK0ubD">下载</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/#player-ranking}">排行</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/register}">注册</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/changepasswd}">修改</a>
-                </li>
-            </ul>
+        <div class="container-fluid">
+            <!-- 导航链接放置在左上侧 -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/}">主页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/#game-intro}">介绍</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://share.weiyun.com/BAfK0ubD">下载</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/#player-ranking}">排行</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/register}">注册</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/changepasswd}">修改</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- “阿童木决战” 放在右上侧 -->
+            <a class="navbar-brand ms-auto" href="#">阿童木决战</a>
+            <audio controls>
+                <source th:src="@{/music/Login_sound.mp4}" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
         </div>
     </nav>
-
-    <audio controls>
-        <source src="/music/lovelife.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
 </div>
 </body>
 </html>
