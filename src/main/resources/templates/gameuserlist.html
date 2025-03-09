@@ -24,16 +24,16 @@
             background-color: #f2f2f2; /* 表头背景颜色 */
         }
         .top-user {
-            color: royalblue; /* 橘红色文字 */
+            color: #28a745; /* 橘红色文字 */
             font-size: 18px; /* 增加字号，假设默认字号为16px */
         }
 
         .top1 {
-            color: royalblue; /* 橘红色文字 */
+            color: #28a745; /* 橘红色文字 */
             font-size: 24px; /* 增加字号，假设默认字号为16px */
         }
         .bold {
-            font-weight: bold; /* 粗体样式 */
+            font-weight: normal; /* 粗体样式 */
         }
     </style>
 </head>
@@ -55,7 +55,7 @@
         <td th:text="${user.level}" th:class="${iterStat.index == 0 ? 'top1 bold' : (iterStat.index < 3 ? 'top-user bold' : '')}"></td>
         <td th:text="${user.byClass == 0 ? '格斗家' : (user.byClass == 1 ? '异能者' : (user.byClass == 2 ? '剑武士' : '枪械师'))}"
             th:class="${iterStat.index == 0 ? 'top1 bold' : (iterStat.index < 3 ? 'top-user bold' : '')}"></td>
-        <td th:text="${user.gender == 1 ? '人妖' : '男性'}" th:class="${iterStat.index == 0 ? 'top1 bold' : (iterStat.index < 3 ? 'top-user bold' : '')}"></td>
+        <td th:text="${user.gender == 1 ? '女性' : '男性'}" th:class="${iterStat.index == 0 ? 'top1 bold' : (iterStat.index < 3 ? 'top-user bold' : '')}"></td>
     </tr>
     </tbody>
 </table>
