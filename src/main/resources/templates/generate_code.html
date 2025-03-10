@@ -85,8 +85,8 @@
         <div class="form-group">
             <label for="codeType">注册码类型:</label>
             <select id="codeType" name="codeType">
-                <option value="trial" th:selected="${codeType == 'trial'}">免费试玩注册码</option>
                 <option value="year" th:selected="${codeType == 'year'}">月卡注册码</option>
+                <option value="trial" th:selected="${codeType == 'trial'}">免费试玩注册码</option>
             </select>
         </div>
 
@@ -95,8 +95,8 @@
 
     <div th:if="${registrationCode}" class="result">
         <h4>注册码类型:
-            <span th:if="${codeType == 'trial'}">免费试玩注册码</span>
             <span th:if="${codeType == 'year'}">月卡注册码</span>
+            <span th:if="${codeType == 'trial'}">免费试玩注册码</span>
         </h4>
         <h3>注册码: <span th:text="${registrationCode}" style="color: red;"></span></h3>
     </div>

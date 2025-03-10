@@ -5,35 +5,48 @@
     <title>Top Game Users</title>
     <style>
         body {
-            display: flex;
-            justify-content: center; /* 水平居中 */
-            align-items: center; /* 垂直居中 */
-            height: 100vh; /* 使body占满整个视口高度 */
-            margin: 0; /* 去掉默认margin */
+            margin: 0;
+            padding: 0;
+            font-family: 'Raleway', sans-serif;
         }
         table {
-            border-collapse: collapse; /* 合并边框 */
-            width: 80%; /* 设置表格宽度 */
+            width: 100%; /* 设置表格宽度为100%，适应屏幕宽度 */
+            border-collapse: collapse;
         }
         th, td {
-            padding: 10px; /* 内边距 */
-            text-align: center; /* 单元格内容居中 */
-            border: 1px solid black; /* 边框样式 */
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+            font-size: 18px; /* 减小字体大小，适应小屏幕 */
+            font-weight: lighter; /* 添加此行，确保字体为正常粗细 */
         }
         th {
-            background-color: #f2f2f2; /* 表头背景颜色 */
+            background-color: #f2f2f2;
         }
         .top-user {
-            color: #28a745; /* 橘红色文字 */
-            font-size: 18px; /* 增加字号，假设默认字号为16px */
+            color: #00c4ff;
+            font-size: 20px;
         }
-
         .top1 {
-            color: #28a745; /* 橘红色文字 */
-            font-size: 24px; /* 增加字号，假设默认字号为16px */
+            color: #0080ff;
+            font-size: 22px;
         }
         .bold {
-            font-weight: normal; /* 粗体样式 */
+            font-weight: normal;
+        }
+
+        @media screen and (max-width: 600px) {
+            table {
+                font-size: 12px; /* 进一步减小字体大小 */
+            }
+            th, td {
+                padding: 5px;
+            }
+            /* 在小屏幕上隐藏部分列 */
+            th:nth-child(4), td:nth-child(4),
+            th:nth-child(5), td:nth-child(5) {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -41,21 +54,21 @@
 <table>
     <thead>
     <tr>
-        <th>名次</th> <!-- 新增名次列 -->
+        <th>名次</th>
         <th>角色名</th>
-        <th>級別</th>
-        <th>職業</th>
-        <th>性別</th>
+        <th>级别</th>
+        <th>职业</th>
+        <th>性别</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="user, iterStat : ${gameUsers}">
-        <td th:text="${iterStat.index + 1}" th:class="${iterStat.index == 0 ? 'top1 bold' : (iterStat.index < 3 ? 'top-user bold' : '')}"></td> <!-- 名次列 -->
-        <td th:text="${user.userID}" th:class="${iterStat.index == 0 ? 'top1 bold' : (iterStat.index < 3 ? 'top-user bold' : '')}"></td>
-        <td th:text="${user.level}" th:class="${iterStat.index == 0 ? 'top1 bold' : (iterStat.index < 3 ? 'top-user bold' : '')}"></td>
+        <td th:text="${iterStat.index + 1}" th:class="${iterStat.index == 0 ? 'top1' : (iterStat.index < 3 ? 'top-user' : '')}"></td>
+        <td th:text="${user.userID}" th:class="${iterStat.index == 0 ? 'top1' : (iterStat.index < 3 ? 'top-user' : '')}"></td>
+        <td th:text="${user.level}" th:class="${iterStat.index == 0 ? 'top1' : (iterStat.index < 3 ? 'top-user' : '')}"></td>
         <td th:text="${user.byClass == 0 ? '格斗家' : (user.byClass == 1 ? '异能者' : (user.byClass == 2 ? '剑武士' : '枪械师'))}"
-            th:class="${iterStat.index == 0 ? 'top1 bold' : (iterStat.index < 3 ? 'top-user bold' : '')}"></td>
-        <td th:text="${user.gender == 1 ? '女性' : '男性'}" th:class="${iterStat.index == 0 ? 'top1 bold' : (iterStat.index < 3 ? 'top-user bold' : '')}"></td>
+            th:class="${iterStat.index == 0 ? 'top1' : (iterStat.index < 3 ? 'top-user' : '')}"></td>
+        <td th:text="${user.gender == 1 ? '女性' : '男性'}" th:class="${iterStat.index == 0 ? 'top1' : (iterStat.index < 3 ? 'top-user' : '')}"></td>
     </tr>
     </tbody>
 </table>

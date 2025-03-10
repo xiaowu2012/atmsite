@@ -61,7 +61,7 @@
         label {
             display: block;
             margin: 10px 0 5px;
-            font-weight: bold;
+           /* font-weight: bold;*/
             color: #333333; /* 字体颜色调整为深灰色 */
         }
 
@@ -104,6 +104,14 @@
             background-color: #218838; /* 按钮悬停时颜色调整为深绿色 */
         }
 
+        /* 当按钮被禁用时的样式 */
+        button[type="submit"]:disabled {
+            background-color: #ccc; /* 灰色背景 */
+            color: #666; /* 文字颜色变淡 */
+            cursor: not-allowed; /* 鼠标样式改为不可点击 */
+            opacity: 0.7; /* 轻微透明，让按钮看起来更像不可用状态 */
+        }
+
         p {
             text-align: center;
             font-size: 14px;
@@ -131,31 +139,97 @@
     <div class="right-column">
         <form th:action="@{/register}" th:object="${account}" method="post">
             <label for="accountID">游戏帐号: <span class="required">*</span></label>
-            <input type="text" id="accountID" name="accountID" th:value="${account.accountID}" required />
+            <input class="auto-trim" type="text" id="accountID" name="accountID" th:value="${account.accountID}" required />
 
             <label for="password">游戏密码: <span class="required">*</span></label>
-            <input type="password" id="password" name="password" th:value="${account.password}" required />
+            <input class="auto-trim" type="password" id="password" name="password" th:value="${account.password}" required />
+            <label for="confirmPassword">确认游戏密码: <span class="required">*</span></label>
+            <input class="auto-trim" type="password" id="confirmPassword" name="confirmPassword" required />
+            <p id="passwordMismatchWarning" style="color: red; display: none;">游戏密码不匹配，请重新输入。</p>
 
-            <label for="transactionPassword">交易密码: <span class="required">*</span></label>
-            <input type="password" id="transactionPassword" name="transactionPassword" th:value="${account.transactionPassword}"
+            <label for="transactionPassword">交易密码: <span class="required">*</span> </label>
+            <input class="auto-trim" type="password" id="transactionPassword" name="transactionPassword" placeholder="(非常重要: 用于解锁或删除角色，必须是6位数字)" th:value="${account.transactionPassword}"
                    required maxlength="6" pattern="\d{6}" title="交易密码必须是6位数字" />
 
-            <label for="email">邮箱地址: <span class="required">*</span></label>
-            <input type="email" id="email" name="email" th:value="${account.email}" required />
+            <label for="confirmTransactionPassword">确认交易密码: <span class="required">*</span></label>
+            <input class="auto-trim" type="password" id="confirmTransactionPassword" name="confirmTransactionPassword" required maxlength="6" pattern="\d{6}" placeholder="(非常重要: 用于解锁或删除角色，必须是6位数字)"/>
+            <p id="transactionPasswordMismatchWarning" style="color: red; display: none;">交易密码不匹配，请重新输入。</p>
+
+            <label for="email">邮箱地址: <span class="required">*</span> </label>
+            <input class="auto-trim" type="email" id="email" name="email" placeholder="(非常重要: 用于找回资料)" th:value="${account.email}" required />
 
             <label for="name">玩家姓名: <span class="required">*</span></label>
-            <input type="text" id="name" name="name" th:value="${account.name}" required />
-
-            <label for="idCard">身份证号码: <span class="required">*</span></label>
-            <input type="text" id="idCard" name="idCard" th:value="${account.idCard}" required />
-
+            <input class="auto-trim" type="text" id="name" name="name" th:value="${account.name}" required />
+            <input type="hidden" id="idCard" name="idCard" th:value="${account.transactionPassword}"/>
             <label for="registerCode">注册码: <span class="required">*</span></label>
-            <input type="text" id="registerCode" name="registerCode" th:value="${account.registerCode}" required />
-
-            <button type="submit">注册</button>
+            <input type="text" id="registerCode" name="registerCode" th:value="${account.registerCode}" placeholder="(请联系管理员获取注册码)" required />
+            <button type="submit" id="registerBtn" disabled>注册</button>
         </form>
     </div>
 </div>
+
+<script>
+
+    document.querySelectorAll(".auto-trim").forEach(input => {
+        input.addEventListener("blur", function() {
+            this.value = this.value.trim();
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        function setupPasswordValidation(passwordId, confirmPasswordId, warningId) {
+            let passwordField = document.getElementById(passwordId);
+            let confirmPasswordField = document.getElementById(confirmPasswordId);
+            let warningText = document.getElementById(warningId);
+
+            function checkPasswordMatch() {
+                if (confirmPasswordField.value && passwordField.value !== confirmPasswordField.value) {
+                    warningText.style.display = "block";
+                } else {
+                    warningText.style.display = "none";
+                }
+                toggleSubmitButton(); // 检查按钮是否可用
+            }
+
+
+            function toggleSubmitButton() {
+                let passwordValue = document.getElementById('password').value;
+                let transactionPassword = document.getElementById('transactionPassword').value;
+                let confirmPasswordValue = document.getElementById("confirmPassword").value;
+                let confirmTransactionPasswordValue = document.getElementById("confirmTransactionPassword").value;
+                if(passwordValue !== "" && transactionPassword && confirmPasswordValue !== "" && confirmTransactionPasswordValue !== "") {
+                    let passwordMatch = document.getElementById("password").value === document.getElementById("confirmPassword").value;
+                    let transactionPasswordMatch = document.getElementById("transactionPassword").value === document.getElementById("confirmTransactionPassword").value;
+                    let submitButton = document.querySelector("button[type='submit']");
+
+                    if (passwordMatch && transactionPasswordMatch) {
+                        submitButton.disabled = false;
+                    } else {
+                        submitButton.disabled = true;
+                    }
+                }
+            }
+
+            // 失去焦点时检查密码是否匹配
+            confirmPasswordField.addEventListener("focusout", checkPasswordMatch);
+
+            // 输入时实时检查
+            confirmPasswordField.addEventListener("input", checkPasswordMatch);
+            passwordField.addEventListener("input", checkPasswordMatch);
+
+            // 重新聚焦时隐藏警告
+            confirmPasswordField.addEventListener("focus", function () {
+                warningText.style.display = "none";
+            });
+        }
+
+        // 设置游戏密码校验
+        setupPasswordValidation("password", "confirmPassword", "passwordMismatchWarning");
+
+        // 设置交易密码校验
+        setupPasswordValidation("transactionPassword", "confirmTransactionPassword", "transactionPasswordMismatchWarning");
+    });
+</script>
 
 </body>
 </html>
