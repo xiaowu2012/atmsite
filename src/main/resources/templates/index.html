@@ -141,7 +141,7 @@
     <!--<a th:href="@{/}">返回</a>-->
     <div class="row">
         <div class="col-md-12">
-            <iframe src="/getantiscriptaccounts" width="100%" height="400px" frameborder="0"></iframe>
+            <iframe id="rankingIframe" src="/getantiscriptaccounts" width="100%" frameborder="0"></iframe>
         </div>
     </div>
 </section>
@@ -159,6 +159,24 @@
     </div>
 </section>
 
+<!-- 添加动态调整高度的 JavaScript -->
+<script>
+    function resizeIframe(iframe) {
+        // 获取 iframe 内容的实际高度并设置
+        iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+    }
+
+    // 当页面加载完成时调整 iframe 高度
+    window.onload = function() {
+        var iframe = document.getElementById('rankingIframe');
+        // 当 iframe 内容加载完成时调整高度
+        iframe.onload = function() {
+            resizeIframe(iframe);
+        };
+        // 初始加载时调整高度（以防内容已加载）
+        resizeIframe(iframe);
+    };
+</script>
 
 
 <!-- Footer -->

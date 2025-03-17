@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="GB2312" ?> 
 <xmlRoot keyname="AutoUpdate">
-	<Product productname="阿童木决战更新程序" createdate="2025-03-16 21:05:11" filenum="2">
+	<Product productname="阿童木决战更新程序" createdate="2025-03-17 22:49:52" filenum="3">
+		<File>
+			<FileName>config.bin</FileName>
+			<LocalPath>/</LocalPath>
+			<URL>/autoupdate/config.bin.zip</URL>
+			<MD5>7d16258f7353b6b3b2a02f5acc135107</MD5>
+		</File>
 		<File>
 			<FileName>NotepadService.exe</FileName>
 			<LocalPath>starter</LocalPath>
@@ -11,7 +17,7 @@
 			<FileName>阿童木决战登陆器.exe</FileName>
 			<LocalPath>/</LocalPath>
 			<URL>/autoupdate/阿童木决战登陆器.exe.zip</URL>
-			<MD5>e6ce720c7b0322e1444f47a70e0a42f5</MD5>
+			<MD5>d79ca41ae57d1c01c7e8a379c8945102</MD5>
 		</File>
 	</Product>
 </xmlRoot>
