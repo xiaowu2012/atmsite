@@ -12,7 +12,7 @@
 
 
     <update id="updateAccountLock" parameterType="com.xiaowudr.atmsite.pojo.AccountLock">
-        UPDATE USER_ANTISCRIPT SET ISBLOCKED=1, LOCKTYPE= #{lockType}, ANTITIMESTAMP=GETDATE() WHERE ACCOUNT= #{accountId}
+        UPDATE USER_ANTISCRIPT SET ISBLOCKED=#{isBlocked}, LOCKTYPE= #{lockType}, ANTITIMESTAMP=GETDATE() WHERE ACCOUNT= #{accountId}
     </update>
 
 

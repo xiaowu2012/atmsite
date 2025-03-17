@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Param;
 public interface AccountLockMapper {
     void insertAccountLock(AccountLock accountLock);
 
-    //int updateAccountLock(AccountLock accountLock);
+    int updateAccountLock(AccountLock accountLock);
 
     AccountLock getAccountLock(@Param("accountId") String accountId);
 }

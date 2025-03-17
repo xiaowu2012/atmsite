@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xiaowudr.atmsite.mapper.AntiScriptAccountMapper">
+
+    <select id="getAntiScriptAccount" parameterType="String" resultType="com.xiaowudr.atmsite.pojo.AntiScriptAccount">
+        SELECT LEFT(a.account, LEN(a.account) - 2) + '**' AS accountId, b.strchar01 AS gameName
+        FROM user_antiscript a, chars b
+        WHERE a.account = b.straccount
+          AND b.strchar01 IS NOT NULL
+          AND a.isblocked = 1
+
+        UNION
+
+        SELECT LEFT(a.account, LEN(a.account) - 2) + '**' AS accountId, b.strchar02 AS gameName
+        FROM user_antiscript a, chars b
+        WHERE a.account = b.straccount
+          AND b.strchar02 IS NOT NULL
+          AND a.isblocked = 1
+
+        UNION
+
+        SELECT LEFT(a.account, LEN(a.account) - 2) + '**' AS accountId, b.strchar03 AS gameName
+        FROM user_antiscript a, chars b
+        WHERE a.account = b.straccount
+          AND b.strchar03 IS NOT NULL
+          AND a.isblocked = 1
+    </select>
+
+
+</mapper>

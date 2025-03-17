@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>antiscript account</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Raleway', sans-serif;
+        }
+        table {
+            width: 100%; /* 设置表格宽度为100%，适应屏幕宽度 */
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+            font-size: 18px; /* 减小字体大小，适应小屏幕 */
+            font-weight: lighter; /* 添加此行，确保字体为正常粗细 */
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .top-user {
+            color: #00c4ff;
+            font-size: 20px;
+        }
+        .top1 {
+            color: #0080ff;
+            font-size: 22px;
+        }
+        .bold {
+            font-weight: normal;
+        }
+
+        @media screen and (max-width: 600px) {
+            table {
+                font-size: 12px; /* 进一步减小字体大小 */
+            }
+            th, td {
+                padding: 5px;
+            }
+            /* 在小屏幕上隐藏部分列 */
+            th:nth-child(4), td:nth-child(4),
+            th:nth-child(5), td:nth-child(5) {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>账号名</th>
+        <th>角色名</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="antiScriptAccount, iterStat : ${antiscriptaccounts}">
+        <td th:text="${antiScriptAccount.accountId}"></td>
+        <td th:text="${antiScriptAccount.gameName}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

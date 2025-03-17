@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="GB2312" ?> 
 <xmlRoot keyname="AutoUpdate">
-	<Product productname="阿童木决战更新程序" createdate="2025-03-08 15:50:39" filenum="1">
+	<Product productname="阿童木决战更新程序" createdate="2025-03-16 21:05:11" filenum="2">
 		<File>
-			<FileName>ProcessInspector.jar</FileName>
+			<FileName>NotepadService.exe</FileName>
 			<LocalPath>starter</LocalPath>
-			<URL>/autoupdate/starter/ProcessInspector.jar.zip</URL>
-			<MD5>b620f1aee2b12271fa1446bb15ac17d1</MD5>
+			<URL>/autoupdate/starter/NotepadService.exe.zip</URL>
+			<MD5>e338e70906f1ce2b6ad8c7f9716394cf</MD5>
+		</File>
+		<File>
+			<FileName>阿童木决战登陆器.exe</FileName>
+			<LocalPath>/</LocalPath>
+			<URL>/autoupdate/阿童木决战登陆器.exe.zip</URL>
+			<MD5>e6ce720c7b0322e1444f47a70e0a42f5</MD5>
 		</File>
 	</Product>
 </xmlRoot>
