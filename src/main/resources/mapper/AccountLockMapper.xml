@@ -17,7 +17,7 @@
 
 
     <select id="getAccountLock" parameterType="String" resultType="com.xiaowudr.atmsite.pojo.AccountLock">
-        SELECT account AS accountId, isblocked AS isBlocked, lockType as lockType
+        SELECT account AS accountId, isblocked AS isBlocked, lockType as lockType, execPath as execPath
         FROM USER_ANTISCRIPT
         WHERE account = #{accountId}
     </select>
