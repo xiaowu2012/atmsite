@@ -45,20 +45,20 @@ public class UserAccountService {
         Account currentAccount = accountMapper.getUserByAccount(accountId);
         if(currentAccount!=null) {
             //String accountId = currentAccount.getAccountID();
-            //AccountLock accountLock = accountLockMapper.getAccountLock(accountId);
+            AccountLock accountLock = accountLockMapper.getAccountLock(accountId);
+
             AccountLock newAccountLock = new AccountLock();
             newAccountLock.setAccountId(accountId);
             newAccountLock.setLockType(lockType);
             newAccountLock.setIsBlocked(1);
             newAccountLock.setExecPath(execPath);
 
-         /*   if(accountLock!=null) {
-                accountLockMapper.updateAccountLock(accountLock);
+            if(accountLock!=null) {
+                accountLockMapper.updateAccountLock(newAccountLock);
             } else {
                 accountLockMapper.insertAccountLock(newAccountLock);
-            }*/
-
-            accountLockMapper.insertAccountLock(newAccountLock);
+            }
+            //accountLockMapper.insertAccountLock(newAccountLock);
         }
         //return accountMapper.lockUser(accountId, lockType);
     }
