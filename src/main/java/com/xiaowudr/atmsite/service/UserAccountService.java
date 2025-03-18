@@ -19,7 +19,7 @@ public class UserAccountService {
 
     private static final Logger log = LoggerFactory.getLogger(UserAccountService.class);
 
-    static String connectionUrl = "jdbc:sqlserver://123.57.182.30:1433;databaseName=drgame;;user=sa;password=P@ss123456";
+    static String connectionUrl = "jdbc:sqlserver://39.106.16.22:1433;databaseName=drgame;;user=sa;password=P@ss123456";
     static Connection con;
 
     @Autowired
