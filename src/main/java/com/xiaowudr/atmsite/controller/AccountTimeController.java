@@ -36,7 +36,7 @@ public class AccountTimeController {
         if ("year".equals(rechargeType)) {
             rechargeMonths = 12;
         } else if ("month".equals(rechargeType)) {
-            rechargeMonths = 1;
+            rechargeMonths = 12;
         }
 
         // 插入数据到数据库
