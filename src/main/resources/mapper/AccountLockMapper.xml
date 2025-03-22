@@ -15,6 +15,10 @@
         UPDATE USER_ANTISCRIPT SET ISBLOCKED=#{isBlocked}, LOCKTYPE= #{lockType}, EXECPATH=#{execPath}, ANTITIMESTAMP=GETDATE() WHERE ACCOUNT= #{accountId}
     </update>
 
+    <update id="unblockAccountLock" parameterType="String">
+        UPDATE USER_ANTISCRIPT SET ISBLOCKED=0 WHERE ACCOUNT= #{accountId}
+    </update>
+
 
     <select id="getAccountLock" parameterType="String" resultType="com.xiaowudr.atmsite.pojo.AccountLock">
         SELECT account AS accountId, isblocked AS isBlocked, lockType as lockType, execPath as execPath

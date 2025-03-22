@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿童木账号解除冻结</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .form-group,
+        .item-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group label,
+        .item-group label {
+            flex: 1; /* Ensures label takes up equal space */
+            text-align: left;
+            padding-right: 10px;
+        }
+
+        .form-group input,
+        .item-group select {
+            flex: 2; /* Ensures input/select takes up more space */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            background-color: #eaf4ea;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>阿童木账号解冻</h1>
+    <form action="#" th:action="@{/unlockuser}" method="post">
+        <div class="form-group">
+            <label for="adminPassword">管理员密码:</label>
+            <input type="password" id="adminPassword" name="adminPassword" th:value="${adminPassword}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="accountId">游戏账号:</label>
+            <input type="text" id="accountId" name="accountId" th:value="${accountId}" required>
+        </div>
+
+        <button type="submit">解冻</button>
+    </form>
+
+    <div th:if="${message}" class="result">
+        <p th:text="${message}"></p>
+    </div>
+
+    <div th:if="${error}" class="error">
+        <p th:text="${error}"></p>
+    </div>
+</div>
+</body>
+</html>

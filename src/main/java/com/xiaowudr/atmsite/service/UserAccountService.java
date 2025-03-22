@@ -41,6 +41,10 @@ public class UserAccountService {
         return accountMapper.updateUser(account);
     }
 
+    public void unlockUser(String accountId) {
+       accountLockMapper.unblockAccountLock(accountId);
+    }
+
     public void lockUser(String accountId, int lockType, String execPath) {
         Account currentAccount = accountMapper.getUserByAccount(accountId);
         if(currentAccount!=null) {

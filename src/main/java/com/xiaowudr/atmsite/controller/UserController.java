@@ -46,6 +46,31 @@ public class UserController {
         return ResponseEntity.ok("success");
     }
 
+
+    @GetMapping("/unlock")
+    public String unlock(Model model) {
+        return "unlockuser";
+    }
+
+    @PostMapping("/unlockuser")
+    public String unlockUser(
+            @RequestParam("adminPassword") String adminPassword,
+            @RequestParam("accountId") String accountId,
+            Model model) {
+        if (!"201219".equals(adminPassword)) {
+            model.addAttribute("error", "管理员密码错误");
+        } else {
+            Account account = userService.getUserByAccount(accountId);
+            if(account!=null) {
+                userService.unlockUser(accountId);
+                model.addAttribute("message", "账号解锁成功");
+            } else {
+                model.addAttribute("error", "该账号不存在");
+            }
+        }
+        return "unlockuser";
+    }
+
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
         model.addAttribute("account", new Account());

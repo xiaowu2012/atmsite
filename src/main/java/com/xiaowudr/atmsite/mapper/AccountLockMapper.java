@@ -12,4 +12,6 @@ public interface AccountLockMapper {
     int updateAccountLock(AccountLock accountLock);
 
     AccountLock getAccountLock(@Param("accountId") String accountId);
+
+    void unblockAccountLock(@Param("accountId") String accountId);
 }
