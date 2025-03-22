@@ -28,7 +28,7 @@ public class DeliveryController {
             Model model) {
 
         // 验证管理员密码
-        if (!"201219".equals(adminPassword)) {
+        if (!"qq123654".equals(adminPassword)) {
             model.addAttribute("error", "管理员密码错误");
             return "deliver_item";
         }
